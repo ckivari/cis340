@@ -1,20 +1,34 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useState } from 'react';
+import { Text, Image, View } from 'react-native';
+import { Button } from 'react-native-web';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+function TV() {
+ 
+  const [isOff, setIsOff] = useState(true);
+  return(
+  <View>
+    {"\n\n\n\n"}
+    <Text>
+      This is {props.name} TV, and is {isOff ? "OFF" : "Turned me on"}
+    </Text>
+    <Button
+      onPress = {() => {
+        setIsOff(false);
+      }
+      }
+      disabled = {!isOff}
+      title = {isOff ? "Turn me on, please!" : "Thank You!"}
+    />
+  </View>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default function MultiTVs(){
+  return(
+    <View>
+      <TV name = "LG"/>
+      <TV name = "Sony"/>
+    </View>
+  )
+}
+
