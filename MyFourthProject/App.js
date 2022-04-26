@@ -1,20 +1,33 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import {Text, View,  SectionList } from 'react-native';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+
+export default StatesApp = () => {
+  return(
+   <View style={{flex: 1, paddingTop: 22}}>
+     <SectionList 
+      sections={[
+        {title: 'A', data: ['Alabama', 'Alaska', 'Arizona', 'Arkansas']},
+        {title: 'C', data: ['California', 'Colorado', 'Connecticut']},
+        {title: 'D', data: ['Delaware']}
+      ]}
+      renderItem = 
+      {({item}) => <Text style= {{padding: 10, fontSize: 20, height: 44}}> {item.key} </Text>}
+      renderSectionHeader={({section}) => <Text style = {{paddingTop: 4, paddingLeft: 10,
+      paddingRight: 10,
+      paddingBottom: 4,
+      fontSize: 14,
+      fontWeight: 'bold',
+      backgroundColor: '#9FA8DA'}}>{section.title}</Text>}
+      keyExtractor={(item,index) =>index}
+      
+  />
+  
+  
+      </View>
+    
   );
+    
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+  
